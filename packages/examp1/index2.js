@@ -77,7 +77,6 @@
       ctx.strokeRect(5, 5, 490, 290);
 
       ctx.textBaseline = "top";
-
       ctx.fillStyle = "#000000";
       ctx.font = "10px Arial";
       ctx.fillText(new Date().toLocaleString(), 150, 150);
