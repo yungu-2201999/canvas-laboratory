@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Laboratory2</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="position: absolute;top: 50px;left:50px;">
+        <canvas id="canvas" width="500" height="500">Your browser does not support the canvas element.</canvas>
+    </div>
+    <form>
+        Text: <input type="text" id="textBox" placeholder="you text" />
+        <button id="changeSize">改变宽高</button>
+        <button id="changeStyle">改变css样式</button>
+    </form>
+    <button id="btn">preview</button>
+    <textarea id="imageDataDisplay" style="display:block;" cols="30" rows="10"></textarea>
+    <script src="./route.js"></script>
+</body>
+
+</html>
