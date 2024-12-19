@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>examp3</title>
 </head>
+
 <body>
     <canvas id="canvasOne" width="600" height="200"></canvas>
-    
+    <script>
+        window.addEventListener('load', eventWindowLoaded, false)
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+        function canvasApp() {
+            var message = "HTML5 Canvas";
+
+            var canvas = document.getElementById('canvasOne');
+            var ctx = canvas.getContext('2d');
+
+            function drawScreen() {
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.font = '30px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+
+                var metrics = ctx.measureText(message);
+                var textWidth = metrics.width;
+                var xPosition = (canvas.width / 2);
+                var yPosition = (canvas.height / 2);
+
+                var gradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+                for (let i = 0; i < colorStops.length; i++) {
+                    var tempColorStop = colorStops[i];
+                    var tempColor = tempColorStop.color;
+                    var tempStopPercent = tempColorStop.stopPercent;
+
+                    gradient.addColorStop(tempStopPercent, tempColor);
+                    tempStopPercent += 0.15;
+console.log(tempStopPercent)
+                    if (tempStopPercent > 1) {
+                        tempStopPercent = 0;
+                    }
+                    tempColorStop.stopPercent = tempStopPercent;
+                    colorStops[i] = tempColorStop;
+                }
+                ctx.fillStyle = gradient;
+                ctx.fillText(message, xPosition, yPosition);
+
+            }
+            function gameLoop() {
+                    window.setTimeout(gameLoop, 225);
+                    drawScreen();
+                }
+            var colorStops = [
+                { color: '#ff0000', stopPercent: 0 },
+                { color: '#00ff00', stopPercent: 0.15 },
+                { color: '#0000ff', stopPercent: 0.3 },
+                { color: '#ffff00', stopPercent: 0.45 },
+                { color: '#ff00ff', stopPercent: 0.6 },
+                { color: '#00ffff', stopPercent: 0.75 },
+                { color: '#ffffff', stopPercent: 1 }
+            ];
+            gameLoop();
+        }
+    </script>
 </body>
+
 </html>
